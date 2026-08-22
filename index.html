@@ -261,7 +261,7 @@
   .projects { background: var(--bg); }
   .project-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     gap: 48px 40px;
   }
   .project-card {
@@ -312,10 +312,11 @@
   .entry-list { list-style: none; }
   .entry {
     display: grid;
-    grid-template-columns: 150px 1fr;
+    grid-template-columns: 140px 1fr;
     gap: 24px;
     padding: 20px 0;
     border-top: 1px solid var(--gray);
+    align-items: center;
   }
   .entry:last-child { border-bottom: 1px solid var(--gray); }
   .entry .meta {
@@ -323,7 +324,6 @@
     color: var(--text-tertiary);
     letter-spacing: -0.01em;
     line-height: 1.5;
-    padding-top: 2px;
   }
   .entry h3 {
     font-size: 17px;
@@ -337,6 +337,11 @@
     line-height: 1.5;
     color: var(--text-secondary);
     letter-spacing: -0.01em;
+  }
+  .school-badge {
+    width: 76px;
+    height: 76px;
+    object-fit: contain;
   }
 
   /* ---------- Publications ---------- */
@@ -532,14 +537,8 @@
     <div class="wrap">
       <div class="about-body">
           <div class="bio reveal-up" style="--d:.12s">
-            <p>I'm a student at the University of Massachusetts Amherst. My work sits at the intersection of machine learning and robotics — I care about building systems that learn and act in the real world.</p>
-            <p>I'm currently exploring research directions in my coursework and looking for opportunities to contribute to real projects. Outside of class, I like to build things and break them.</p>
-            <p class="interests-title">Research interests</p>
-            <ul class="interests">
-              <li><strong>Machine Learning</strong> — how models learn, generalize, and fail, and how to make them more reliable.</li>
-              <li><strong>Robotics</strong> — perception, planning, and control: getting machines to act in the physical world.</li>
-              <li><strong>Robot Learning</strong> — where the two meet: learning policies and representations that let robots adapt and improve.</li>
-            </ul>
+            <p>Hi! I'm Yufan Lin, an undergraduate student at the University of Massachusetts Amherst. My research interest is robotics — I want to build robots that benefit humanity.</p>
+            <p>I'm currently working as a research assistant at the Huzhou Institute of Zhejiang University, where my work focuses on dexterous robotic hands. I'm deeply grateful to Guannan Li for his mentorship and guidance.</p>
           </div>
         </div>
       </div>
@@ -551,17 +550,10 @@
       <p class="section-label reveal-fade">News</p>
       <ul class="entry-list">
         <li class="entry reveal-up">
-          <span class="meta">Aug 2026</span>
-          <div>
-            <h3>Launched my personal website</h3>
-            <p>Put together a personal academic page to share my work and interests.</p>
-          </div>
-        </li>
-        <li class="entry reveal-up" style="--d:.1s">
           <span class="meta">2026</span>
           <div>
-            <h3>Exploring research in robot learning</h3>
-            <p>Diving into how learned policies can help robots adapt to the real world.</p>
+            <h3>Started my robotics journey</h3>
+            <p>Began studying and researching robotics.</p>
           </div>
         </li>
       </ul>
@@ -575,40 +567,12 @@
       <h2 class="section-heading reveal-up">Things I've built</h2>
       <div class="project-grid">
         <article class="project-card reveal-up" style="--d:0s">
-          <div class="project-media" aria-label="Project image placeholder">
-            <!-- <img src="project1.jpg" alt="Project 1"> -->
-            Robot
+          <div class="project-media">
+            <img src="humanoid.jpg" alt="AI-powered humanoid robot for human interaction">
           </div>
-          <h3>Autonomous Mobile Robot</h3>
-          <p class="project-desc">Differential-drive robot with LiDAR SLAM and real-time obstacle avoidance.</p>
-          <div class="project-tags"><span>ROS</span><span>SLAM</span><span>Navigation</span></div>
-        </article>
-        <article class="project-card reveal-up" style="--d:.1s">
-          <div class="project-media" aria-label="Project image placeholder">
-            <!-- <img src="project2.jpg" alt="Project 2"> -->
-            Arm
-          </div>
-          <h3>Vision-Guided Robotic Arm</h3>
-          <p class="project-desc">6-DOF arm that picks and places objects using camera-based pose estimation.</p>
-          <div class="project-tags"><span>Computer Vision</span><span>Control</span><span>Python</span></div>
-        </article>
-        <article class="project-card reveal-up" style="--d:.2s">
-          <div class="project-media" aria-label="Project image placeholder">
-            <!-- <img src="project3.jpg" alt="Project 3"> -->
-            RL
-          </div>
-          <h3>RL for Robot Locomotion</h3>
-          <p class="project-desc">Training a quadruped to walk in simulation with sim-to-real transfer.</p>
-          <div class="project-tags"><span>RL</span><span>PyTorch</span><span>MuJoCo</span></div>
-        </article>
-        <article class="project-card reveal-up" style="--d:.3s">
-          <div class="project-media" aria-label="Project image placeholder">
-            <!-- <img src="project4.jpg" alt="Project 4"> -->
-            Drone
-          </div>
-          <h3>Autonomous Quadcopter</h3>
-          <p class="project-desc">Quadcopter with onboard visual odometry and waypoint following.</p>
-          <div class="project-tags"><span>PX4</span><span>ROS</span><span>Perception</span></div>
+          <h3>AI-Powered Humanoid Robot for Human Interaction</h3>
+          <p class="project-desc">An AI-driven humanoid robot designed for direct human interaction in real-world scenarios such as hospitals, homes, exhibition halls, parks, and care facilities. The platform integrates multimodal human-robot interaction, computer vision, voice interaction, and autonomous navigation. The project is still in development.</p>
+          <div class="project-tags"><span>Humanoid Robotics</span><span>Multimodal Interaction</span><span>Dexterous Manipulation</span><span>Autonomous Navigation</span></div>
         </article>
       </div>
     </div>
@@ -619,8 +583,7 @@
     <div class="wrap">
       <p class="section-label reveal-fade">Publications</p>
       <h2 class="section-heading reveal-up">Papers</h2>
-      <p class="empty-note reveal-up">Nothing here yet — my first paper is on the way.
-      In the meantime, my <a href="cv.pdf">CV</a> has details on coursework and projects.</p>
+      <p class="empty-note reveal-up">Nothing here yet — my first paper is on the way.</p>
     </div>
   </section>
 
@@ -630,10 +593,10 @@
       <p class="section-label reveal-fade">Education</p>
       <ul class="entry-list">
         <li class="entry reveal-up">
-          <span class="meta">2024 — Present</span>
+          <img class="school-badge" src="umass-seal.png" alt="UMass Amherst">
           <div>
             <h3>University of Massachusetts Amherst</h3>
-            <p>B.S. in Computer Science, with a focus on machine learning and robotics.</p>
+            <p>B.S. in Computer Science and Mathematics</p>
           </div>
         </li>
       </ul>
@@ -646,10 +609,10 @@
       <p class="section-label reveal-fade">Experience</p>
       <ul class="entry-list">
         <li class="entry reveal-up">
-          <span class="meta">2025 — Present</span>
+          <img class="school-badge" src="zju-logo.png" alt="Zhejiang University">
           <div>
-            <h3>Undergraduate Research Assistant</h3>
-            <p>University of Massachusetts Amherst — building and evaluating robot-learning systems.</p>
+            <h3>Research Assistant</h3>
+            <p>Huzhou Institute of Zhejiang University</p>
           </div>
         </li>
       </ul>
