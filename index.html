@@ -499,10 +499,10 @@
           <p class="role reveal-up" style="--d:.16s">Undergraduate Student · University of Massachusetts Amherst</p>
           <ul class="contact-list reveal-up" style="--d:.24s">
             <li>
-              <a href="mailto:yufanlin@umass.edu">
+              <button type="button" id="emailBtn">
                 <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></span>
                 Email
-              </a>
+              </button>
             </li>
             <li>
               <a href="https://github.com/yufanlyn" target="_blank" rel="noopener">
@@ -636,6 +636,15 @@
   </div>
 </div>
 
+<!-- Email modal -->
+<div class="modal-backdrop" id="emailModal" role="dialog" aria-modal="true" aria-label="Email">
+  <div class="modal-card">
+    <p class="m-title">My Email</p>
+    <div class="m-id" id="emailId">1115lin6324@gmail.com</div>
+    <button class="m-close" id="emailClose">Close</button>
+  </div>
+</div>
+
 <script>
   // Mobile menu
   var menuBtn = document.getElementById('menuBtn');
@@ -674,6 +683,23 @@
   });
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') closeWechat();
+  });
+
+  // Email modal
+  var emailBtn = document.getElementById('emailBtn');
+  var emailModal = document.getElementById('emailModal');
+  var emailClose = document.getElementById('emailClose');
+
+  function openEmail() { emailModal.classList.add('open'); }
+  function closeEmail() { emailModal.classList.remove('open'); }
+
+  emailBtn.addEventListener('click', openEmail);
+  emailClose.addEventListener('click', closeEmail);
+  emailModal.addEventListener('click', function (e) {
+    if (e.target === emailModal) closeEmail();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeEmail();
   });
 
   // Reveal on scroll (replays in both directions)
