@@ -3,177 +3,219 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Yufan Lin — UMass Amherst</title>
-<meta name="description" content="Yufan Lin — student at the University of Massachusetts Amherst.">
-<meta name="theme-color" content="#FFFFFF">
+<title>Yufan Lin — Robotics · UMass Amherst</title>
+<meta name="description" content="Yufan Lin — Undergraduate student at UMass Amherst researching humanoid robots and dexterous robotic hands.">
+<meta name="theme-color" content="#FAF9F6">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
 <style>
   :root {
-    --ink: #1D1D1F;
-    --bg: #FFFFFF;
-    --bg-alt: #F5F5F7;
-    --gray: #E8E8ED;
+    --paper: #FAF9F6;
+    --surface: #FFFFFF;
+    --surface-subtle: #F3F1EC;
+    --ink: #1A1918;
+    --ink-secondary: #4A4743;
+    --ink-muted: #7A756E;
+    --border: #E6E2DA;
+    --border-strong: #D6D0C5;
     --maroon: #881C1C;
-    --text-secondary: rgba(0, 0, 0, 0.8);
-    --text-tertiary: rgba(0, 0, 0, 0.48);
-    --text-secondary-dark: rgba(255, 255, 255, 0.88);
-    --text-tertiary-dark: rgba(255, 255, 255, 0.56);
-    --font: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    --max: 980px;
+    --maroon-soft: rgba(136, 28, 28, 0.06);
+    --maroon-border: rgba(136, 28, 28, 0.18);
+    --green: #15803D;
+    --font-serif: 'Newsreader', Georgia, 'Times New Roman', serif;
+    --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    --sidebar-w: 312px;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   html { scroll-behavior: smooth; }
-  @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
   body {
-    font-family: var(--font);
+    font-family: var(--font-sans);
+    background: var(--paper);
     color: var(--ink);
-    background: var(--bg);
+    line-height: 1.65;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
 
-  /* ---------- Navigation ---------- */
+  /* ---------- Top Nav ---------- */
   .nav {
     position: sticky;
     top: 0;
     z-index: 100;
-    height: 48px;
+    height: 56px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 22px;
-    background: rgba(255, 255, 255, 0.8);
-    -webkit-backdrop-filter: saturate(180%) blur(20px);
-    backdrop-filter: saturate(180%) blur(20px);
-    border-bottom: 1px solid var(--gray);
+    padding: 0 32px;
+    background: rgba(250, 249, 246, 0.86);
+    -webkit-backdrop-filter: saturate(160%) blur(16px);
+    backdrop-filter: saturate(160%) blur(16px);
+    border-bottom: 1px solid var(--border);
   }
-  .nav a, .nav button {
-    color: rgba(0, 0, 0, 0.7);
+  .nav .brand {
+    font-family: var(--font-serif);
+    font-size: 19px;
+    font-weight: 500;
+    color: var(--ink);
     text-decoration: none;
-    font-size: 12px;
     letter-spacing: -0.01em;
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-family: inherit;
   }
-  .nav a:hover { color: var(--maroon); }
-  .nav a.active { color: var(--maroon); }
-  .nav .brand { font-weight: 600; font-size: 14px; color: var(--ink); }
-  .nav-links { display: flex; gap: 32px; }
-  .nav-links a { transition: color .2s ease; }
-  .nav a:focus-visible, .nav button:focus-visible { outline: 2px solid var(--maroon); outline-offset: 4px; border-radius: 2px; }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
+  .nav-links a {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink-muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    position: relative;
+    padding: 4px 0;
+  }
+  .nav-links a:hover,
+  .nav-links a.active {
+    color: var(--maroon);
+  }
+  .nav-links a.active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -2px;
+    height: 1.5px;
+    background: var(--maroon);
+  }
+  .menu-btn {
+    display: none;
+    background: none;
+    border: 1px solid var(--border-strong);
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--ink);
+    cursor: pointer;
+  }
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--maroon);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
 
-  .menu-btn { display: none; font-size: 16px; padding: 10px; margin-right: -10px; }
-
+  /* ---------- Mobile Menu ---------- */
   .mobile-menu {
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.96);
-    -webkit-backdrop-filter: saturate(180%) blur(20px);
-    backdrop-filter: saturate(180%) blur(20px);
     z-index: 200;
+    background: rgba(26, 25, 24, 0.96);
+    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter: blur(18px);
     flex-direction: column;
     justify-content: center;
-    gap: 8px;
     padding: 0 32px;
+    gap: 6px;
   }
+  .mobile-menu.open { display: flex; }
   .mobile-menu a {
-    color: #fff;
+    font-family: var(--font-serif);
     font-size: 32px;
-    font-weight: 600;
+    color: #FAF9F6;
     text-decoration: none;
     padding: 12px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.12);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
   }
   .mobile-menu .close {
     position: absolute;
-    top: 16px;
-    right: 22px;
-    font-size: 14px;
-    color: rgba(255,255,255,0.9);
-    cursor: pointer;
+    top: 18px;
+    right: 24px;
     background: none;
-    border: none;
-    font-family: inherit;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 6px;
+    padding: 6px 14px;
+    color: #FAF9F6;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    cursor: pointer;
   }
-  .mobile-menu.open { display: flex; }
 
-  /* ---------- Sections ---------- */
-  section { padding: 96px 22px; }
-
-  .wrap {
-    max-width: var(--max);
+  /* ---------- Page Layout ---------- */
+  .layout {
+    max-width: 1240px;
     margin: 0 auto;
+    display: grid;
+    grid-template-columns: var(--sidebar-w) minmax(0, 1fr);
+    min-height: calc(100vh - 56px);
   }
 
-  .section-label {
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-    color: var(--maroon);
-    margin-bottom: 16px;
-    text-transform: uppercase;
-  }
-
-  .section-heading {
-    font-size: clamp(32px, 5vw, 48px);
-    font-weight: 600;
-    line-height: 1.1;
-    letter-spacing: -0.02em;
-    margin-bottom: 40px;
-  }
-
-  /* ---------- Sidebar (fixed left) ---------- */
+  /* ---------- Sidebar ---------- */
   .sidebar {
-    position: fixed;
-    top: 48px;
-    left: 0;
-    bottom: 0;
-    width: 340px;
-    padding: 56px 16px 40px 96px;
+    position: sticky;
+    top: 56px;
+    height: calc(100vh - 56px);
+    padding: 48px 32px 36px;
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     overflow-y: auto;
-    background: linear-gradient(to right, var(--bg-alt) 0%, var(--bg-alt) 55%, var(--bg) 100%);
   }
-  .main-content { margin-left: 340px; }
-
-  .intro { background: var(--bg); padding: 56px 22px 48px; }
   .avatar {
-    width: 100px;
-    height: 100px;
+    width: 96px;
+    height: 96px;
     border-radius: 50%;
-    background: var(--gray);
+    background: var(--surface);
+    border: 1px solid var(--border-strong);
+    box-shadow: 0 4px 14px rgba(26, 25, 24, 0.05);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #C7C7CC;
-    font-size: 32px;
-    font-weight: 600;
+    font-family: var(--font-serif);
+    font-size: 30px;
+    font-weight: 500;
+    color: var(--maroon);
     letter-spacing: -0.02em;
+    margin-bottom: 22px;
     overflow: hidden;
-    margin-bottom: 20px;
   }
   .avatar img { width: 100%; height: 100%; object-fit: cover; }
+
   .sidebar .name {
-    font-size: clamp(24px, 3vw, 32px);
-    font-weight: 600;
-    line-height: 1.1;
+    font-family: var(--font-serif);
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 1.15;
     letter-spacing: -0.02em;
-    margin-bottom: 6px;
+    color: var(--ink);
+    margin-bottom: 8px;
   }
   .sidebar .role {
-    font-size: 13px;
-    font-weight: 400;
-    line-height: 1.4;
-    letter-spacing: -0.01em;
-    color: var(--maroon);
-    margin-bottom: 22px;
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: var(--ink-secondary);
+    margin-bottom: 6px;
   }
+  .sidebar .affiliation {
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    color: var(--maroon);
+    letter-spacing: 0.01em;
+    margin-bottom: 24px;
+  }
+
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 0 0 18px;
+  }
+
   .contact-list {
     list-style: none;
     display: flex;
@@ -182,466 +224,610 @@
   }
   .contact-list a,
   .contact-list button {
+    width: 100%;
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    color: var(--ink);
+    gap: 11px;
+    padding: 8px 10px;
+    margin-left: -10px;
+    border-radius: 8px;
+    color: var(--ink-secondary);
     text-decoration: none;
     font-size: 13.5px;
-    letter-spacing: -0.01em;
-    line-height: 1;
-    padding: 6px 0;
+    font-family: inherit;
     background: none;
     border: none;
     cursor: pointer;
-    font-family: inherit;
-    transition: color .2s ease;
+    text-align: left;
+    transition: background 0.18s ease, color 0.18s ease;
   }
   .contact-list a:hover,
-  .contact-list button:hover { color: var(--maroon); }
+  .contact-list button:hover {
+    background: var(--maroon-soft);
+    color: var(--maroon);
+  }
   .contact-list .icon {
-    width: 16px;
-    height: 16px;
+    width: 15px;
+    height: 15px;
     flex-shrink: 0;
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    opacity: 0.85;
   }
   .contact-list .icon svg { width: 100%; height: 100%; }
 
-  /* About (right column) */
-  .about-body .bio { font-size: 17px; line-height: 1.6; color: var(--text-secondary); letter-spacing: -0.01em; }
-  .about-body .bio p + p { margin-top: 16px; }
-
-  .btn {
-    display: inline-block;
-    padding: 11px 22px;
-    border-radius: 8px;
-    font-size: 17px;
-    text-decoration: none;
-    cursor: pointer;
-    min-height: 44px;
-    display: inline-flex;
-    align-items: center;
-    transition: opacity .2s ease, color .2s ease, border-color .2s ease;
-  }
-  .btn:hover { opacity: 0.88; }
-  .btn-primary { background: var(--maroon); color: #fff; }
-  .btn-ghost-light { background: transparent; color: var(--ink); border: 1px solid var(--ink); }
-  .btn-ghost-light:hover { color: var(--maroon); border-color: var(--maroon); opacity: 1; }
-  .btn:focus-visible { outline: 2px solid var(--maroon); outline-offset: 3px; }
-
-  /* ---------- Research interests (merged into About) ---------- */
-  .about-body .interests-title {
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: var(--maroon);
-    margin: 26px 0 12px;
-  }
-  .about-body .interests {
-    list-style: none;
+  .sidebar-foot {
+    padding-top: 24px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--ink-muted);
     display: flex;
-    flex-direction: column;
+    align-items: center;
     gap: 8px;
   }
-  .about-body .interests li {
-    font-size: 16px;
-    line-height: 1.55;
-    color: var(--text-secondary);
-    letter-spacing: -0.01em;
-  }
-  .about-body .interests strong {
-    color: var(--ink);
-    font-weight: 600;
+  .status-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--green);
+    flex-shrink: 0;
+    box-shadow: 0 0 0 3px rgba(21, 128, 61, 0.15);
   }
 
-  /* ---------- Projects ---------- */
-  .projects { background: var(--bg); }
-  .project-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 48px 40px;
+  /* ---------- Main Column ---------- */
+  .main-content {
+    padding: 0 56px 40px;
+    min-width: 0;
   }
+
+  section {
+    padding: 56px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  section:last-of-type { border-bottom: none; }
+
+  .section-kicker {
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--maroon);
+    margin-bottom: 14px;
+  }
+  .section-title {
+    font-family: var(--font-serif);
+    font-size: clamp(26px, 3vw, 32px);
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 24px;
+  }
+
+  /* ---------- About / Hero ---------- */
+  .hero-statement {
+    font-family: var(--font-serif);
+    font-size: clamp(28px, 3.6vw, 40px);
+    font-weight: 400;
+    line-height: 1.24;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 24px;
+    max-width: 680px;
+  }
+  .hero-statement em {
+    font-style: italic;
+    color: var(--maroon);
+  }
+  .bio {
+    max-width: 660px;
+    font-size: 15.5px;
+    line-height: 1.75;
+    color: var(--ink-secondary);
+  }
+  .bio p + p { margin-top: 14px; }
+  .bio strong { color: var(--ink); font-weight: 500; }
+
+  .interests-wrap {
+    margin-top: 32px;
+  }
+  .interests-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-muted);
+    margin-bottom: 12px;
+  }
+  .interests-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .interest-pill {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+  .interest-pill:hover {
+    border-color: var(--maroon-border);
+    transform: translateY(-1px);
+  }
+  .interest-pill h3 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .interest-pill p {
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: var(--ink-muted);
+  }
+
+  /* ---------- Featured Project Card ---------- */
   .project-card {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 28px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(26, 25, 24, 0.03);
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+  }
+  .project-card:hover {
+    border-color: var(--border-strong);
+    box-shadow: 0 12px 28px rgba(26, 25, 24, 0.06);
+    transform: translateY(-2px);
   }
   .project-media {
+    border-radius: 9px;
+    overflow: hidden;
+    background: var(--surface-subtle);
+    border: 1px solid var(--border);
     aspect-ratio: 16 / 10;
+  }
+  .project-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .project-card:hover .project-media img {
+    transform: scale(1.03);
+  }
+  .project-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4px 4px 4px 0;
+  }
+  .project-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    width: fit-content;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--maroon);
+    background: var(--maroon-soft);
+    border: 1px solid var(--maroon-border);
+    padding: 4px 10px;
+    border-radius: 999px;
+    margin-bottom: 14px;
+  }
+  .project-card h3 {
+    font-family: var(--font-serif);
+    font-size: 23px;
+    font-weight: 500;
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    margin-bottom: 10px;
+  }
+  .project-desc {
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: var(--ink-secondary);
+    margin-bottom: 18px;
+  }
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .project-tags span {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--ink-secondary);
+    background: var(--surface-subtle);
+    padding: 4px 9px;
+    border-radius: 5px;
+  }
+
+  /* ---------- Entries (News / Education / Experience) ---------- */
+  .entry-list {
+    list-style: none;
+  }
+  .entry {
+    display: grid;
+    grid-template-columns: 92px minmax(0, 1fr);
+    gap: 20px;
+    padding: 18px 0;
+    border-top: 1px solid var(--border);
+    align-items: center;
+  }
+  .entry:first-child { border-top: none; padding-top: 4px; }
+  .entry-meta {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--ink-muted);
+  }
+  .entry-badge {
+    width: 60px;
+    height: 60px;
     border-radius: 12px;
-    background: var(--gray);
+    background: var(--surface);
+    border: 1px solid var(--border);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #C7C7CC;
-    font-size: 28px;
-    font-weight: 600;
-    letter-spacing: -0.02em;
+    padding: 8px;
     overflow: hidden;
-    margin-bottom: 20px;
+    box-shadow: 0 2px 6px rgba(26, 25, 24, 0.03);
   }
-  .project-media img { width: 100%; height: 100%; object-fit: cover; }
-  .project-card h3 {
-    font-size: 21px;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-    line-height: 1.2;
-    margin-bottom: 8px;
-  }
-  .project-card .project-desc {
-    font-size: 15px;
-    line-height: 1.5;
-    color: var(--text-secondary);
-    letter-spacing: -0.01em;
-    margin-bottom: 16px;
-  }
-  .project-tags { display: flex; flex-wrap: wrap; gap: 8px; }
-  .project-tags span {
-    font-size: 12px;
-    color: var(--maroon);
-    padding: 4px 11px;
-    border: 1px solid var(--gray);
-    border-radius: 6px;
-    letter-spacing: -0.01em;
-  }
-
-  /* ---------- List sections (News / Education / Experience) ---------- */
-  .list-section { background: var(--bg); }
-  .entry-list { list-style: none; }
-  .entry {
-    display: grid;
-    grid-template-columns: 140px 1fr;
-    gap: 24px;
-    padding: 20px 0;
-    border-top: 1px solid var(--gray);
-    align-items: center;
-  }
-  .entry:last-child { border-bottom: 1px solid var(--gray); }
-  .entry .meta {
-    font-size: 14px;
-    color: var(--text-tertiary);
-    letter-spacing: -0.01em;
-    line-height: 1.5;
+  .entry-badge img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
   }
   .entry h3 {
-    font-size: 17px;
+    font-size: 16px;
     font-weight: 600;
-    letter-spacing: -0.01em;
-    line-height: 1.4;
-    margin-bottom: 4px;
+    color: var(--ink);
+    line-height: 1.35;
+    margin-bottom: 3px;
   }
   .entry p {
-    font-size: 16px;
-    line-height: 1.5;
-    color: var(--text-secondary);
-    letter-spacing: -0.01em;
+    font-size: 14.5px;
+    color: var(--ink-secondary);
+    line-height: 1.55;
   }
-  .school-badge {
-    width: 76px;
-    height: 76px;
-    object-fit: contain;
+  .entry .sub-meta {
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    color: var(--ink-muted);
+    margin-top: 4px;
   }
 
-  /* ---------- Publications ---------- */
-  .publications { background: var(--bg); }
-  .empty-note {
-    font-size: 19px;
-    line-height: 1.6;
-    color: var(--text-secondary);
-    letter-spacing: -0.01em;
+  /* ---------- Footer ---------- */
+  footer {
+    margin-top: 16px;
+    padding: 28px 0 12px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    color: var(--ink-muted);
   }
-  .empty-note a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--gray); text-underline-offset: 3px; }
-  .empty-note a:hover { color: var(--maroon); text-decoration-color: var(--maroon); }
 
-  /* ---------- WeChat modal ---------- */
+  /* ---------- Modal ---------- */
   .modal-backdrop {
     position: fixed;
     inset: 0;
-    z-index: 200;
-    background: rgba(0, 0, 0, 0.35);
+    z-index: 250;
+    background: rgba(26, 25, 24, 0.38);
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 22px;
+    padding: 20px;
     opacity: 0;
     pointer-events: none;
-    transition: opacity .25s ease;
+    transition: opacity 0.2s ease;
   }
   .modal-backdrop.open { opacity: 1; pointer-events: auto; }
   .modal-card {
-    background: #fff;
+    background: var(--surface);
+    border: 1px solid var(--border);
     border-radius: 16px;
-    max-width: 340px;
+    max-width: 360px;
     width: 100%;
-    padding: 28px 26px;
-    text-align: center;
-    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.2);
+    padding: 26px;
+    box-shadow: 0 20px 50px rgba(26, 25, 24, 0.16);
     transform: translateY(8px) scale(0.98);
-    transition: transform .25s ease;
+    transition: transform 0.22s ease;
   }
   .modal-backdrop.open .modal-card { transform: translateY(0) scale(1); }
-  .modal-card .m-title {
-    font-size: 15px;
-    font-weight: 600;
-    letter-spacing: -0.01em;
+  .m-title {
+    font-family: var(--font-serif);
+    font-size: 20px;
+    font-weight: 500;
     margin-bottom: 14px;
+    color: var(--ink);
   }
-  .modal-card .m-id {
-    font-size: 19px;
-    font-weight: 600;
-    letter-spacing: 0.01em;
+  .m-id {
+    font-family: var(--font-mono);
+    font-size: 14px;
     color: var(--maroon);
-    background: var(--bg-alt);
-    border-radius: 8px;
-    padding: 12px 16px;
-    margin-bottom: 18px;
+    background: var(--paper);
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    padding: 13px 14px;
+    margin-bottom: 16px;
+    word-break: break-all;
     user-select: all;
   }
-  .modal-card .m-close {
-    font-size: 14px;
-    color: var(--ink);
-    background: var(--bg-alt);
-    border: none;
+  .m-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .m-btn {
+    flex: 1;
+    min-height: 38px;
+    padding: 8px 14px;
     border-radius: 8px;
-    padding: 9px 18px;
-    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
     font-family: inherit;
-    transition: opacity .2s ease;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border-strong);
+    background: var(--surface);
+    color: var(--ink);
+    transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease;
   }
-  .modal-card .m-close:hover { opacity: 0.8; }
-
-  footer {
-    position: relative;
-    z-index: 5;
-    background: var(--ink);
-    color: var(--text-tertiary-dark);
-    text-align: center;
-    padding: 24px 22px 48px;
-    font-size: 12px;
-    letter-spacing: -0.01em;
+  .m-btn:hover { background: var(--surface-subtle); }
+  .m-btn-primary {
+    background: var(--maroon);
+    border-color: var(--maroon);
+    color: #FFFFFF;
   }
+  .m-btn-primary:hover { background: #6F1616; }
 
-  /* ---------- Reveal animation ---------- */
-  .reveal, .reveal-up, .reveal-left, .reveal-right, .reveal-scale, .reveal-fade {
+  /* ---------- One-Shot Calm Reveal ---------- */
+  .reveal {
     opacity: 0;
-    transition: opacity .9s cubic-bezier(.16, 1, .3, 1), transform .9s cubic-bezier(.16, 1, .3, 1);
-    transition-delay: var(--d, 0s);
-    will-change: opacity, transform;
+    transform: translateY(14px);
+    transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1), transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
   }
-  .reveal, .reveal-up { transform: translateY(28px); }
-  .reveal-left { transform: translateX(-36px); }
-  .reveal-right { transform: translateX(36px); }
-  .reveal-scale { transform: scale(.95); }
-  .reveal-fade { transform: none; }
-  .in-view { opacity: 1; transform: none; }
+  .reveal.in-view { opacity: 1; transform: none; }
   @media (prefers-reduced-motion: reduce) {
-    .reveal, .reveal-up, .reveal-left, .reveal-right, .reveal-scale, .reveal-fade {
-      opacity: 1; transform: none; transition: none; transition-delay: 0s;
-    }
+    .reveal { opacity: 1; transform: none; transition: none; }
   }
 
   /* ---------- Responsive ---------- */
-  @media (max-width: 768px) {
-    section { padding: 88px 20px; }
-    .nav-links { display: none; }
-    .menu-btn { display: block; }
-    .project-grid { grid-template-columns: 1fr; }
-    .intro { padding: 56px 20px 88px; }
+  @media (max-width: 960px) {
+    .layout { grid-template-columns: 1fr; }
     .sidebar {
       position: static;
-      width: auto;
-      padding: 48px 20px 24px;
-      background: var(--bg-alt);
+      height: auto;
+      border-right: none;
+      border-bottom: 1px solid var(--border);
+      padding: 36px 24px 28px;
     }
-    .main-content { margin-left: 0; }
+    .main-content { padding: 0 24px 32px; }
+    .project-card { grid-template-columns: 1fr; }
+    .interests-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    .nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .menu-btn { display: inline-flex; }
+    .entry { grid-template-columns: 1fr; gap: 10px; }
+    footer { flex-direction: column; align-items: flex-start; gap: 6px; }
   }
 </style>
 </head>
 <body>
 
-<!-- Navigation -->
 <nav class="nav" aria-label="Primary">
   <a class="brand" href="#top">Yufan Lin</a>
   <div class="nav-links">
-    <a href="#about">About</a>
-    <a href="#news">News</a>
+    <a href="#about" class="active">About</a>
     <a href="#projects">Projects</a>
-    <a href="#publications">Publications</a>
-    <a href="#education">Education</a>
-    <a href="#experience">Experience</a>
+    <a href="#background">Background</a>
+    <a href="#news">News</a>
   </div>
-  <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">Menu</button>
+  <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">MENU</button>
 </nav>
 
-<!-- Mobile menu -->
 <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Menu">
-  <button class="close" id="closeMenu">Close</button>
+  <button class="close" id="closeMenu">CLOSE</button>
   <a href="#about">About</a>
-  <a href="#news">News</a>
   <a href="#projects">Projects</a>
-  <a href="#publications">Publications</a>
-  <a href="#education">Education</a>
-  <a href="#experience">Experience</a>
+  <a href="#background">Background</a>
+  <a href="#news">News</a>
 </div>
 
-<main id="top">
-
-  <!-- Sidebar -->
+<div class="layout" id="top">
   <aside class="sidebar" aria-label="Profile">
-          <div class="avatar reveal-scale" aria-label="Portrait placeholder">
-            <!-- Replace with your photo:
-                 <img src="photo.jpg" alt="Yufan Lin"> -->
-            YL
-          </div>
-          <h1 class="name reveal-up" style="--d:.08s">Yufan&nbsp;Lin</h1>
-          <p class="role reveal-up" style="--d:.16s">Undergraduate Student · University of Massachusetts Amherst</p>
-          <ul class="contact-list reveal-up" style="--d:.24s">
-            <li>
-              <button type="button" id="emailBtn">
-                <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></span>
-                Email
-              </button>
-            </li>
-            <li>
-              <a href="https://github.com/yufanlyn" target="_blank" rel="noopener">
-                <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></span>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://www.linkedin.com/in/yufan-lin-b364683b1/" target="_blank" rel="noopener">
-                <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></span>
-                LinkedIn
-              </a>
-            </li>
-            <li>
-              <button type="button" id="wechatBtn">
-                <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span>
-                WeChat
-              </button>
-            </li>
-            <li>
-              <a href="https://www.google.com/maps?q=Amherst,+MA" target="_blank" rel="noopener">
-                <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
-                Amherst, MA
-              </a>
-            </li>
-          </ul>
+    <div>
+      <div class="avatar" aria-label="Yufan Lin monogram">
+        <!-- Replace with your portrait: <img src="photo.jpg" alt="Yufan Lin"> -->
+        YL
+      </div>
+      <h1 class="name">Yufan Lin</h1>
+      <p class="role">Undergraduate Student</p>
+      <p class="affiliation">UMass Amherst</p>
+
+      <div class="divider"></div>
+
+      <ul class="contact-list">
+        <li>
+          <button type="button" id="emailBtn">
+            <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></span>
+            Email
+          </button>
+        </li>
+        <li>
+          <a href="https://github.com/yufanlyn" target="_blank" rel="noopener">
+            <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></span>
+            GitHub
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/yufan-lin-b364683b1/" target="_blank" rel="noopener">
+            <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></span>
+            LinkedIn
+          </a>
+        </li>
+        <li>
+          <button type="button" id="wechatBtn">
+            <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span>
+            WeChat
+          </button>
+        </li>
+        <li>
+          <a href="https://www.google.com/maps?q=Amherst,+MA" target="_blank" rel="noopener">
+            <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            Amherst, MA
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="sidebar-foot">
+      <span class="status-dot" aria-hidden="true"></span>
+      <span>Exploring humanoid robotics</span>
+    </div>
   </aside>
 
-  <!-- Content -->
-  <div class="main-content">
+  <main class="main-content">
+    <section id="about" class="reveal">
+      <p class="section-kicker">About</p>
+      <h2 class="hero-statement">Building <em>humanoid robots</em> and dexterous hands designed to genuinely benefit humanity.</h2>
+      <div class="bio">
+        <p>Hi! I'm <strong>Yufan Lin</strong>, an undergraduate student pursuing a B.S. in Computer Science and Mathematics at the <strong>University of Massachusetts Amherst</strong>.</p>
+        <p>I currently work as a Research Assistant at the <strong>Huzhou Institute of Zhejiang University</strong>, focusing on humanoid robots and dexterous robotic hands. I am deeply grateful to <strong>Guannan Li</strong> for his mentorship and guidance.</p>
+      </div>
 
-  <!-- Intro / About -->
-  <section class="intro" id="about">
-    <div class="wrap">
-      <div class="about-body">
-          <div class="bio reveal-up" style="--d:.12s">
-            <p>Hi! I'm Yufan Lin, an undergraduate student at the University of Massachusetts Amherst. My research interest is robotics — I want to build robots that benefit humanity.</p>
-            <p>I'm currently working as a research assistant at the Huzhou Institute of Zhejiang University, where my work focuses on humanoid robots and dexterous robotic hands. I'm deeply grateful to Guannan Li for his mentorship and guidance.</p>
+      <div class="interests-wrap">
+        <p class="interests-label">Research Focus</p>
+        <div class="interests-grid">
+          <div class="interest-pill">
+            <h3>Humanoid Robotics</h3>
+            <p>Embodied systems operating safely alongside people in real-world spaces.</p>
+          </div>
+          <div class="interest-pill">
+            <h3>Dexterous Hands</h3>
+            <p>Fine-grained multi-fingered manipulation for everyday physical tasks.</p>
+          </div>
+          <div class="interest-pill">
+            <h3>Multimodal HRI</h3>
+            <p>Integrating vision, voice, and autonomous navigation for natural interaction.</p>
           </div>
         </div>
       </div>
-  </section>
+    </section>
 
-  <!-- News -->
-  <section class="list-section" id="news">
-    <div class="wrap">
-      <p class="section-label reveal-fade">News</p>
-      <ul class="entry-list">
-        <li class="entry reveal-up">
-          <span class="meta">2026</span>
-          <div>
-            <h3>Started my robotics journey</h3>
-            <p>Began studying and researching robotics.</p>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Projects -->
-  <section class="projects" id="projects">
-    <div class="wrap">
-      <p class="section-label reveal-fade">Projects</p>
-      <h2 class="section-heading reveal-up">Things I've built</h2>
-      <div class="project-grid">
-        <article class="project-card reveal-up" style="--d:0s">
-          <div class="project-media">
-            <img src="humanoid.jpg" alt="AI-powered humanoid robot for human interaction">
-          </div>
+    <section id="projects" class="reveal">
+      <p class="section-kicker">Selected Project</p>
+      <h2 class="section-title">Things I'm building</h2>
+      <article class="project-card">
+        <div class="project-media">
+          <img src="humanoid.jpg" alt="AI-powered humanoid robot for human interaction">
+        </div>
+        <div class="project-body">
+          <span class="project-status"><span class="status-dot" aria-hidden="true"></span>In Development</span>
           <h3>AI-Powered Humanoid Robot for Human Interaction</h3>
-          <p class="project-desc">An AI-driven humanoid robot designed for direct human interaction in real-world scenarios such as hospitals, homes, exhibition halls, parks, and care facilities. The platform integrates multimodal human-robot interaction, computer vision, voice interaction, and autonomous navigation. The project is still in development.</p>
-          <div class="project-tags"><span>Humanoid Robotics</span><span>Multimodal Interaction</span><span>Dexterous Manipulation</span><span>Autonomous Navigation</span></div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- Publications -->
-  <section class="publications" id="publications">
-    <div class="wrap">
-      <p class="section-label reveal-fade">Publications</p>
-      <h2 class="section-heading reveal-up">Papers</h2>
-      <p class="empty-note reveal-up">Nothing here yet — my first paper is on the way.</p>
-    </div>
-  </section>
-
-  <!-- Education -->
-  <section class="list-section" id="education">
-    <div class="wrap">
-      <p class="section-label reveal-fade">Education</p>
-      <ul class="entry-list">
-        <li class="entry reveal-up">
-          <img class="school-badge" src="umass-seal.png" alt="UMass Amherst">
-          <div>
-            <h3>University of Massachusetts Amherst</h3>
-            <p>B.S. in Computer Science and Mathematics</p>
+          <p class="project-desc">An AI-driven humanoid platform engineered for direct human interaction across hospitals, homes, exhibition halls, parks, and care facilities—integrating multimodal HRI, computer vision, voice interaction, and autonomous navigation.</p>
+          <div class="project-tags">
+            <span>Humanoid Robotics</span>
+            <span>Multimodal Interaction</span>
+            <span>Dexterous Manipulation</span>
+            <span>Autonomous Navigation</span>
           </div>
-        </li>
-      </ul>
-    </div>
-  </section>
+        </div>
+      </article>
+    </section>
 
-  <!-- Experience -->
-  <section class="list-section" id="experience">
-    <div class="wrap">
-      <p class="section-label reveal-fade">Experience</p>
+    <section id="background" class="reveal">
+      <p class="section-kicker">Background</p>
+      <h2 class="section-title">Education &amp; Experience</h2>
       <ul class="entry-list">
-        <li class="entry reveal-up">
-          <img class="school-badge" src="zju-logo.png" alt="Zhejiang University">
+        <li class="entry">
+          <div class="entry-badge">
+            <img src="zju-logo.png" alt="Zhejiang University">
+          </div>
           <div>
             <h3>Research Assistant</h3>
             <p>Huzhou Institute of Zhejiang University</p>
+            <p class="sub-meta">Humanoid Robots &amp; Dexterous Robotic Hands · Advisor: Guannan Li</p>
+          </div>
+        </li>
+        <li class="entry">
+          <div class="entry-badge">
+            <img src="umass-seal.png" alt="UMass Amherst">
+          </div>
+          <div>
+            <h3>University of Massachusetts Amherst</h3>
+            <p>B.S. in Computer Science and Mathematics</p>
+            <p class="sub-meta">Amherst, Massachusetts</p>
           </div>
         </li>
       </ul>
-    </div>
-  </section>
+    </section>
 
-  </div>
+    <section id="news" class="reveal">
+      <p class="section-kicker">Updates</p>
+      <h2 class="section-title">News</h2>
+      <ul class="entry-list">
+        <li class="entry">
+          <span class="entry-meta">2026</span>
+          <div>
+            <h3>Started my robotics journey</h3>
+            <p>Began studying and researching humanoid robotics and dexterous manipulation.</p>
+          </div>
+        </li>
+      </ul>
+    </section>
 
-</main>
+    <footer>
+      <span>© 2026 Yufan Lin</span>
+      <span>yufanlin.com · Amherst, MA</span>
+    </footer>
+  </main>
+</div>
 
-<footer>© 2026 Yufan Lin</footer>
-
-<!-- WeChat modal -->
-<div class="modal-backdrop" id="wechatModal" role="dialog" aria-modal="true" aria-label="WeChat ID">
+<!-- Email Modal -->
+<div class="modal-backdrop" id="emailModal" role="dialog" aria-modal="true" aria-label="Email address">
   <div class="modal-card">
-    <p class="m-title">My WeChat ID</p>
-    <div class="m-id" id="wechatId">lin6324lin</div>
-    <button class="m-close" id="wechatClose">Close</button>
+    <p class="m-title">Email</p>
+    <div class="m-id" id="emailValue">1115lin6324@gmail.com</div>
+    <div class="m-actions">
+      <button type="button" class="m-btn m-btn-primary" id="copyEmailBtn">Copy Email</button>
+      <a class="m-btn" href="mailto:1115lin6324@gmail.com">Open Mail</a>
+      <button type="button" class="m-btn" id="emailClose">Close</button>
+    </div>
   </div>
 </div>
 
-<!-- Email modal -->
-<div class="modal-backdrop" id="emailModal" role="dialog" aria-modal="true" aria-label="Email">
+<!-- WeChat Modal -->
+<div class="modal-backdrop" id="wechatModal" role="dialog" aria-modal="true" aria-label="WeChat ID">
   <div class="modal-card">
-    <p class="m-title">My Email</p>
-    <div class="m-id" id="emailId">1115lin6324@gmail.com</div>
-    <button class="m-close" id="emailClose">Close</button>
+    <p class="m-title">WeChat ID</p>
+    <div class="m-id" id="wechatValue">lin6324lin</div>
+    <div class="m-actions">
+      <button type="button" class="m-btn m-btn-primary" id="copyWechatBtn">Copy ID</button>
+      <button type="button" class="m-btn" id="wechatClose">Close</button>
+    </div>
   </div>
 </div>
 
@@ -651,116 +837,98 @@
   var mobileMenu = document.getElementById('mobileMenu');
   var closeMenu = document.getElementById('closeMenu');
 
-  function openMenu() {
-    mobileMenu.classList.add('open');
-    menuBtn.setAttribute('aria-expanded', 'true');
+  function toggleMenu(open) {
+    mobileMenu.classList.toggle('open', open);
+    menuBtn.setAttribute('aria-expanded', String(open));
   }
-  function closeMenuFn() {
-    mobileMenu.classList.remove('open');
-    menuBtn.setAttribute('aria-expanded', 'false');
-  }
-  menuBtn.addEventListener('click', openMenu);
-  closeMenu.addEventListener('click', closeMenuFn);
+  menuBtn.addEventListener('click', function () { toggleMenu(true); });
+  closeMenu.addEventListener('click', function () { toggleMenu(false); });
   mobileMenu.querySelectorAll('a').forEach(function (a) {
-    a.addEventListener('click', closeMenuFn);
-  });
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') closeMenuFn();
+    a.addEventListener('click', function () { toggleMenu(false); });
   });
 
-  // WeChat modal
-  var wechatBtn = document.getElementById('wechatBtn');
-  var wechatModal = document.getElementById('wechatModal');
-  var wechatClose = document.getElementById('wechatClose');
+  // Modals + Copy helper
+  function copyText(text, btn, defaultLabel) {
+    function showDone() {
+      btn.textContent = 'Copied ✓';
+      setTimeout(function () { btn.textContent = defaultLabel; }, 1800);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(showDone).catch(function () { fallbackCopy(text, showDone); });
+    } else {
+      fallbackCopy(text, showDone);
+    }
+  }
+  function fallbackCopy(text, cb) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); } catch (e) {}
+    document.body.removeChild(ta);
+    cb();
+  }
 
-  function openWechat() { wechatModal.classList.add('open'); }
-  function closeWechat() { wechatModal.classList.remove('open'); }
-
-  wechatBtn.addEventListener('click', openWechat);
-  wechatClose.addEventListener('click', closeWechat);
-  wechatModal.addEventListener('click', function (e) {
-    if (e.target === wechatModal) closeWechat();
-  });
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') closeWechat();
-  });
-
-  // Email modal
-  var emailBtn = document.getElementById('emailBtn');
   var emailModal = document.getElementById('emailModal');
-  var emailClose = document.getElementById('emailClose');
+  var wechatModal = document.getElementById('wechatModal');
+  document.getElementById('emailBtn').addEventListener('click', function () { emailModal.classList.add('open'); });
+  document.getElementById('emailClose').addEventListener('click', function () { emailModal.classList.remove('open'); });
+  emailModal.addEventListener('click', function (e) { if (e.target === emailModal) emailModal.classList.remove('open'); });
 
-  function openEmail() { emailModal.classList.add('open'); }
-  function closeEmail() { emailModal.classList.remove('open'); }
+  document.getElementById('wechatBtn').addEventListener('click', function () { wechatModal.classList.add('open'); });
+  document.getElementById('wechatClose').addEventListener('click', function () { wechatModal.classList.remove('open'); });
+  wechatModal.addEventListener('click', function (e) { if (e.target === wechatModal) wechatModal.classList.remove('open'); });
 
-  emailBtn.addEventListener('click', openEmail);
-  emailClose.addEventListener('click', closeEmail);
-  emailModal.addEventListener('click', function (e) {
-    if (e.target === emailModal) closeEmail();
+  document.getElementById('copyEmailBtn').addEventListener('click', function () {
+    copyText('1115lin6324@gmail.com', this, 'Copy Email');
   });
+  document.getElementById('copyWechatBtn').addEventListener('click', function () {
+    copyText('lin6324lin', this, 'Copy ID');
+  });
+
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') closeEmail();
+    if (e.key === 'Escape') {
+      toggleMenu(false);
+      emailModal.classList.remove('open');
+      wechatModal.classList.remove('open');
+    }
   });
 
-  // Reveal on scroll (replays in both directions)
-  var revealEls = document.querySelectorAll('.reveal, .reveal-up, .reveal-left, .reveal-right, .reveal-scale, .reveal-fade');
+  // One-shot calm reveal
+  var reveals = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
           entry.target.classList.add('in-view');
-        } else {
-          entry.target.classList.remove('in-view');
+          io.unobserve(entry.target);
         }
       });
-    }, { threshold: 0, rootMargin: '0px 0px -6% 0px' });
-    revealEls.forEach(function (el) { io.observe(el); });
+    }, { threshold: 0.08 });
+    reveals.forEach(function (el) { io.observe(el); });
   } else {
-    revealEls.forEach(function (el) { el.classList.add('in-view'); });
+    reveals.forEach(function (el) { el.classList.add('in-view'); });
   }
 
-  // Nav active state (scrollspy)
+  // Scrollspy
   var navLinks = document.querySelectorAll('.nav-links a');
-  var mainSections = document.querySelectorAll('main section[id]');
-
-  function setActive(id) {
-    navLinks.forEach(function (a) {
-      a.classList.toggle('active', a.getAttribute('href') === '#' + id);
-    });
-  }
-
-  var navLockUntil = 0;
-
+  var sections = document.querySelectorAll('main section[id]');
   function updateActive() {
-    if (Date.now() < navLockUntil) return;
-
-    var vh = window.innerHeight;
-    var refY = vh * 0.45;   // reference line 45% down the viewport (generous reach)
-    var currentId = mainSections.length ? mainSections[0].id : '';
-
-    mainSections.forEach(function (s) {
-      if (s.getBoundingClientRect().top <= refY) currentId = s.id;
+    var refY = window.innerHeight * 0.35;
+    var current = sections.length ? sections[0].id : '';
+    sections.forEach(function (s) {
+      if (s.getBoundingClientRect().top <= refY) current = s.id;
     });
-
-    // Bottom of the page → highlight the last section
-    if ((window.scrollY + vh) >= (document.documentElement.scrollHeight - 2)) {
-      currentId = mainSections[mainSections.length - 1].id;
+    if ((window.scrollY + window.innerHeight) >= document.documentElement.scrollHeight - 4) {
+      current = sections[sections.length - 1].id;
     }
-
-    setActive(currentId);
-  }
-
-  window.addEventListener('scroll', updateActive, { passive: true });
-
-  // Clicking a nav link highlights it immediately (no scroll delay)
-  navLinks.forEach(function (a) {
-    a.addEventListener('click', function () {
-      var id = a.getAttribute('href').slice(1);
-      setActive(id);
-      navLockUntil = Date.now() + 1400;
+    navLinks.forEach(function (a) {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
     });
-  });
-
+  }
+  window.addEventListener('scroll', updateActive, { passive: true });
   updateActive();
 </script>
 </body>
